@@ -93,4 +93,3 @@ document.addEventListener('keydown', function(event) {
         cerrarModal();
     }
 });
-"Corregido script.js"
