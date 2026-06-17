@@ -74,6 +74,20 @@
         <p>&copy; 2026 Mi Portafolio - Todos los derechos reservados</p>
     </footer>
 
-    <script type="text/javascript" src="js/script.js"></script>
+    <script>
+    function verContenido(categoria) {
+        const modal = document.getElementById('modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalBody = document.getElementById('modal-body');
+        
+        modalTitle.textContent = 'Archivos';
+        modalBody.innerHTML = '<p>Lista de archivos</p>';
+        modal.style.display = 'block';
+    }
+    
+    function cerrarModal() {
+        document.getElementById('modal').style.display = 'none';
+    }
+</script>
 </body>
 </html>
