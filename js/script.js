@@ -7,11 +7,11 @@ const archivos = {
     ],
     ejercicios: [
         { nombre: 'EjercicioPráctico1', extension: 'pdf' },
-        { nombre: 'EjercicioPráctico2.0 Arisays y Stefany', extension: 'pdf' }
+        { nombre: 'EjercicioPráctico2.0 Arísays y Ste', extension: 'pdf' }
     ],
     parciales: [
         { nombre: 'Examen Parcial1', extension: 'pdf' },
-        { nombre: 'Examen Parcial2_ArisaysCedeño_StefanyGuerrero', extension: 'pdf' }
+        { nombre: 'Examen Parcial2_ArísaysCedeño', extension: 'pdf' }
     ],
     semestral: []
 };
@@ -44,7 +44,7 @@ function verContenido(categoria) {
         archivosCategoria.forEach(archivo => {
             const color = coloresExtension[archivo.extension] || coloresExtension.default;
             const extensionUpper = archivo.extension.toUpperCase();
-            const ruta = 'assets/docs/' + categoria + '/' + archivo.nombre + '.' + archivo.extension;
+            const ruta = categoria + '/' + archivo.nombre + '.' + archivo.extension;
             html += '<li class="file-item">';
             html += '<div class="file-name">';
             html += '<span><strong>' + archivo.nombre + '</strong></span>';
