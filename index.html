@@ -1,39 +1,79 @@
-<div class="card" id="talleres">
-    <h2>Talleres</h2>
-    <p>
-        Agrega aquí todos los talleres desarrollados durante el semestre.
-    </p>
-    <button>Ver contenido</button>
-</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">Mi Portafolio</div>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#talleres">Talleres</a>
+            <a href="#investigaciones">Investigaciones</a>
+            <a href="#ejercicios">Ejercicios</a>
+            <a href="#parciales">Parciales</a>
+            <a href="#semestral">Semestral</a>
+        </nav>
+    </header>
 
-<div class="card" id="investigaciones">
-    <h2>Investigaciones</h2>
-    <p>
-        Documentos, informes y trabajos de investigación.
-    </p>
-    <button>Ver contenido</button>
-</div>
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Bienvenido a mi Portafolio</h1>
+            <p>Aquí encontrarás todos mis trabajos, talleres, investigaciones y proyectos desarrollados durante el semestre.</p>
+            <a href="#talleres" class="btn">Explorar contenido</a>
+        </div>
+    </section>
 
-<div class="card" id="ejercicios">
-    <h2>Ejercicios</h2>
-    <p>
-        Prácticas y ejercicios realizados en clase.
-    </p>
-    <button>Ver contenido</button>
-</div>
+    <section class="cards-container" id="contenido">
+        <div class="card" id="talleres">
+            <h2>Talleres</h2>
+            <p>Agrega aquí todos los talleres desarrollados durante el semestre.</p>
+            <button onclick="verContenido('talleres')">Ver contenido</button>
+        </div>
 
-<div class="card" id="parciales">
-    <h2>Parciales</h2>
-    <p>
-        Evaluaciones parciales realizadas durante el curso.
-    </p>
-    <button>Ver contenido</button>
-</div>
+        <div class="card" id="investigaciones">
+            <h2>Investigaciones</h2>
+            <p>Documentos, informes y trabajos de investigación.</p>
+            <button onclick="verContenido('investigaciones')">Ver contenido</button>
+        </div>
 
-<div class="card" id="semestral">
-    <h2>Proyecto Semestral</h2>
-    <p>
-        Proyecto final desarrollado durante el semestre.
-    </p>
-    <button>Ver contenido</button>
-</div>
+        <div class="card" id="ejercicios">
+            <h2>Ejercicios</h2>
+            <p>Prácticas y ejercicios realizados en clase.</p>
+            <button onclick="verContenido('ejercicios')">Ver contenido</button>
+        </div>
+
+        <div class="card" id="parciales">
+            <h2>Parciales</h2>
+            <p>Evaluaciones parciales realizadas durante el curso.</p>
+            <button onclick="verContenido('parciales')">Ver contenido</button>
+        </div>
+
+        <div class="card" id="semestral">
+            <h2>Proyecto Semestral</h2>
+            <p>Proyecto final desarrollado durante el semestre.</p>
+            <button onclick="verContenido('semestral')">Ver contenido</button>
+        </div>
+    </section>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Título</h2>
+                <span class="close" onclick="cerrarModal()">&times;</span>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Mi Portafolio - Todos los derechos reservados</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
