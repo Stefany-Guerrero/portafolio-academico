@@ -63,7 +63,7 @@
     <div id="modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 id="modal-title">Título</h2>
+                <h2 id="modal-title">Titulo</h2>
                 <span class="close" onclick="cerrarModal()">&times;</span>
             </div>
             <div class="modal-body" id="modal-body"></div>
@@ -75,19 +75,82 @@
     </footer>
 
     <script>
+    const archivos = {
+        talleres: [
+            { nombre: 'Taller Practica I', extension: 'pdf' }
+        ],
+        investigaciones: [
+            { nombre: 'Investigacion 1 Programacion II', extension: 'pdf' }
+        ],
+        ejercicios: [
+            { nombre: 'EjercicioPractico1', extension: 'pdf' },
+            { nombre: 'EjercicioPractico2.0 Arisays y Ste', extension: 'pdf' }
+        ],
+        parciales: [
+            { nombre: 'Examen Parcial1', extension: 'pdf' },
+            { nombre: 'Examen Parcial2_ArisaysCedeno', extension: 'pdf' }
+        ],
+        semestral: []
+    };
+
     function verContenido(categoria) {
         const modal = document.getElementById('modal');
         const modalTitle = document.getElementById('modal-title');
         const modalBody = document.getElementById('modal-body');
+        const archivosCategoria = archivos[categoria];
+        const titulos = {
+            talleres: 'Talleres',
+            investigaciones: 'Investigaciones',
+            ejercicios: 'Ejercicios',
+            parciales: 'Parciales',
+            semestral: 'Proyecto Semestral'
+        };
         
-        modalTitle.textContent = 'Archivos';
-        modalBody.innerHTML = '<p>Lista de archivos</p>';
+        modalTitle.textContent = titulos[categoria] || categoria;
+        
+        if (archivosCategoria && archivosCategoria.length > 0) {
+            let html = '<ul class="file-list">';
+            archivosCategoria.forEach(function(archivo) {
+                const ruta = categoria + '/' + archivo.nombre + '.' + archivo.extension;
+                html += '<li class="file-item">';
+                html += '<div class="file-name">';
+                html += '<span><strong>' + archivo.nombre + '</strong></span>';
+                html += '<span class="file-extension">' + archivo.extension.toUpperCase() + '</span>';
+                html += '</div>';
+                html += '<button class="file-view-btn" onclick="window.open(\'' + ruta + '\', \'_blank\')">';
+                html += 'Ver archivo';
+                html += '</button>';
+                html += '</li>';
+            });
+            html += '</ul>';
+            modalBody.innerHTML = html;
+        } else {
+            modalBody.innerHTML = '<div class="empty-message"><p>No hay archivos disponibles en esta categoria.</p><p style="font-size: 14px; color: #64748b;">Agrega tus archivos en la seccion correspondiente.</p></div>';
+        }
+        
         modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
     }
-    
+
     function cerrarModal() {
-        document.getElementById('modal').style.display = 'none';
+        const modal = document.getElementById('modal');
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        document.getElementById('modal-body').innerHTML = '';
     }
-</script>
+
+    window.onclick = function(event) {
+        const modal = document.getElementById('modal');
+        if (event.target === modal) {
+            cerrarModal();
+        }
+    };
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            cerrarModal();
+        }
+    });
+    </script>
 </body>
 </html>
