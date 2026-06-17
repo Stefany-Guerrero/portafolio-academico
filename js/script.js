@@ -52,7 +52,7 @@ function verContenido(categoria) {
             html += extensionUpper;
             html += '</span>';
             html += '</div>';
-            html += '<button class="file-view-btn" onclick="visualizarArchivo(\'' + ruta + '\', \'' + archivo.nombre + '\', \'' + archivo.extension + '\')">';
+            html += '<button class="file-view-btn" onclick="abrirArchivo(\'' + ruta + '\')">';
             html += 'Ver archivo';
             html += '</button>';
             html += '</li>';
@@ -66,31 +66,8 @@ function verContenido(categoria) {
     document.body.style.overflow = 'hidden';
 }
 
-function visualizarArchivo(ruta, nombre, extension) {
-    const modalBody = document.getElementById('modal-body');
-    const contenidoActual = modalBody.innerHTML;
-    let contenidoVisualizacion = '';
-    contenidoVisualizacion += '<div style="text-align: center; padding: 20px;">';
-    contenidoVisualizacion += '<h3 style="color: #38bdf8; margin-bottom: 10px;">' + nombre + '</h3>';
-    contenidoVisualizacion += '<p style="color: #94a3b8; margin-bottom: 20px;">Archivo de tipo .' + extension.toUpperCase() + '</p>';
-    contenidoVisualizacion += '<div style="background: rgba(255,255,255,.05); border-radius: 10px; padding: 20px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,.1);">';
-    contenidoVisualizacion += '<iframe src="' + ruta + '" style="width: 100%; height: 400px; border: none; border-radius: 10px;"></iframe>';
-    contenidoVisualizacion += '</div>';
-    contenidoVisualizacion += '<div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">';
-    contenidoVisualizacion += '<a href="' + ruta + '" target="_blank" class="file-view-btn" style="background: #38bdf8; text-decoration: none; padding: 10px 20px; border-radius: 8px; color: black; font-weight: 600;">Abrir en nueva ventana</a>';
-    contenidoVisualizacion += '<button onclick="volverALista()" class="file-view-btn" style="background: #64748b;">Volver</button>';
-    contenidoVisualizacion += '</div>';
-    contenidoVisualizacion += '</div>';
-    modalBody.innerHTML = contenidoVisualizacion;
-    window.contenidoAnterior = contenidoActual;
-}
-
-function volverALista() {
-    const modalBody = document.getElementById('modal-body');
-    if (window.contenidoAnterior) {
-        modalBody.innerHTML = window.contenidoAnterior;
-        window.contenidoAnterior = null;
-    }
+function abrirArchivo(ruta) {
+    window.open(ruta, '_blank');
 }
 
 function cerrarModal() {
@@ -99,7 +76,6 @@ function cerrarModal() {
     document.body.style.overflow = 'auto';
     const modalBody = document.getElementById('modal-body');
     modalBody.innerHTML = '';
-    window.contenidoAnterior = null;
 }
 
 window.onclick = function(event) {
