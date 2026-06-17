@@ -38,7 +38,9 @@ function verContenido(categoria) {
         parciales: 'Parciales',
         semestral: 'Proyecto Semestral'
     };
+    
     modalTitle.textContent = titulos[categoria] || categoria;
+    
     if (archivosCategoria && archivosCategoria.length > 0) {
         let html = '<ul class="file-list">';
         archivosCategoria.forEach(archivo => {
@@ -62,6 +64,7 @@ function verContenido(categoria) {
     } else {
         modalBody.innerHTML = '<div class="empty-message"><p>No hay archivos disponibles en esta categoría.</p><p style="font-size: 14px; color: #64748b;">Agrega tus archivos en la sección correspondiente.</p></div>';
     }
+    
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
 }
@@ -90,3 +93,4 @@ document.addEventListener('keydown', function(event) {
         cerrarModal();
     }
 });
+"Corregido script.js"
